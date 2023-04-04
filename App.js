@@ -4,6 +4,7 @@ let myButton = document.getElementById('myButton');
 let myText = document.getElementById('myText');
 let output = document.getElementById('output1');
 let playAgainBtn = document.getElementById('playAgainBtn')
+let rnd = Math.floor(Math.random());
 let player1 = 0;
 let player2 = 0;
 
@@ -64,14 +65,7 @@ function checkWinner() {
             allSquares.forEach(square => square.replaceWith(square.cloneNode(true)))
             return
         }
-        if (current_player === 0) {
-            player1++;
-        }
-        else {
-            player2++;
-        }
-        document.querySelector('#player1').infoDisplay = player1;
-        document.querySelector('#player2').infoDisplay = player2;
+        score();
     })
     winningCombos.forEach(array => {
         const crossWins = array.every(cell =>
@@ -88,5 +82,11 @@ function checkWinner() {
     playAgainBtn.addEventListener("click", function () {
         location.reload()
     })
+
+    function score() {
+        rnd.score++;
+        // document.querySelector('#player1').infoDisplay = player1;
+        // document.querySelector('#player2').infoDisplay = player2;
+    }
 };
 
