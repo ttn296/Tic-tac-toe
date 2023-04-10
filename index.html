@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="app.js" defer></script>
+    <title>Tic tac toe</title>
+    <link rel="stylesheet" href="style.css" >
+    <script defer src="app.js"></script>
 </head>
 <body>
     <h2>Tic Tac Toe</h2>
-    <form>
-        <label id="name">Player's Name</label><br>
-        <input type="text" id="myText"><br>
-        <button type="button" id="myButton">Submit</button>
-        <p class="output" id="output1"></p>
-      </form>
+    <form class="hero-container">
+      <div class="hero">
+        <label class="hero-label" id="player-name">Player's Name</label><br>
+        <input class="hero-input" id="myText"><br>
+        <button class="hero-btn" id="myButton">Submit</button>
+    </div>
+</form>
+<p class="output" id="output1"></p>
     <div id="gameBoard"></div>
     <p id="info"></p>
-    <!-- <div id="player1">X: 0</div>
-    <div id="player2">O: 0</div> -->
-    <button id="playAgainBtn">Play Again</button>
+    <button class="playAgainBtn" id="playAgainBtn">Play Again</button>
 </body>
 </html>

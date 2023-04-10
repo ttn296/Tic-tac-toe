@@ -1,4 +1,6 @@
+@import 'https://coolors.co/fec5bb-fcd5ce-fae1dd-f8edeb-e8e8e4-d8e2dc-ece4db-ffe5d9-ffd7ba-fec89a';
 body{
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
     display: flex;
@@ -6,35 +8,72 @@ body{
     align-items: center;
     height: 100vh;
     flex-direction: column;
+    background-color: #ffd7ba;
 }
-.info{
-    font-family: 'Roboto', sans-serif;
+
+h2 {
+    text-decoration: underline;
 }
-form{
+
+.hero-container{
     display:flex;
-    justify-content: center;
+    justify-content: space-between;
     align-content: center;
     margin: 12px;
     padding: 12px;
+    border: none;
+    background-color: #fae1dd;
+    border-radius: 20px;;
 }
-input[type=text] {
-    width: 100%;
-    height: 50%;
-    padding: 12px 20px;
-    margin: 10px 0;
-    box-sizing: border-box;
-    padding-right: 20px;
-    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
-  }
-  
-button [type=button]{
-    padding: 16px 32px;
-    margin: 10px 0;
-    width: 100%;
-    height: 50%;
-    text-decoration: none;
-    cursor: pointer;
+
+.hero {
+    display: flex;
+    justify-content: space-between;
 }
+
+.hero-label {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 15px;
+    align-items: center;
+}
+
+.hero-input {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 5px;
+    width: 400px;
+    height: 20px;
+    align-items: center;
+}
+
+.hero-btn {
+    display: flex;
+    justify-content: space-around;
+    width: 80px;
+    align-items: center;
+    border-radius: 40px;
+}
+
+.output {
+    display: flex;
+    justify-content: column;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 30px;
+}
+
+.playAgainBtn {
+    display: flex;
+    justify-content: column;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 15px;
+    border-radius: 50px;
+}
+
 #gameBoard{
     width: 300px;
     height: 300px;
@@ -46,7 +85,7 @@ button [type=button]{
 .square{
     width: 100px;
     height: 100px;
-    background-color: aliceblue;
+    background-color: #fae1dd;
     border: solid 2px black;
     box-sizing: border-box;
     display: flex;

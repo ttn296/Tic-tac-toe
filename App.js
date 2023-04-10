@@ -1,25 +1,24 @@
 const gameBoard = document.querySelector('#gameBoard');
 const infoDisplay = document.querySelector('#info');
-let myButton = document.getElementById('myButton');
-let myText = document.getElementById('myText');
-let output = document.getElementById('output1');
+let myButton = document.querySelector('#myButton');
+let myText = document.querySelector('#myText');
+let output = document.querySelector('#output1');
 let playAgainBtn = document.getElementById('playAgainBtn')
-let rnd = Math.floor(Math.random());
-let player1 = 0;
-let player2 = 0;
+
+//Enter name
+function myName(ev) {
+    ev.preventDefault();
+    output.innerText = myText.value;
+}
+myButton.addEventListener('click', myName);
 
 const startCells = [
     "", "", "", "", "", "", "", "", ""
 ]
 
-//Enter name
-function myName() {
-    output.innerText = myText.value;
-}
-myButton.addEventListener('click', myName);
-
 let current_player = "circle"
 infoDisplay.textContent = "Circle goes first"
+infoDisplay.style.fontWeight = 'bolder';
 
 // create the board
 function createBoard() {
@@ -40,6 +39,7 @@ function addGo(ev) {
     ev.target.append(goDisplay)
     current_player = current_player === "circle" ? "cross" : "circle"
     infoDisplay.textContent = "it is now  " + current_player + "'s turn."
+    infoDisplay.style.fontWeight = 'bolder';
     ev.target.removeEventListener('click', addGo)
     checkWinner()
 }
@@ -55,17 +55,21 @@ function checkWinner() {
         [1, 4, 8], [2, 4, 6]
     ]
 
+    let draw = true;
+
     winningCombos.forEach(array => {
         const circleWins = array.every(cell =>
             allSquares[cell].firstChild?.classList.contains('circle'))
 
         if (circleWins) {
             infoDisplay.textContent = "Circle Wins!"
+            infoDisplay.style.fontWeight = 'bolder';
+            infoDisplay.style.color = 'blue';
             //cannot remove event listener, use cloneNode instead
             allSquares.forEach(square => square.replaceWith(square.cloneNode(true)))
+            draw = false;
             return
         }
-        score();
     })
     winningCombos.forEach(array => {
         const crossWins = array.every(cell =>
@@ -73,20 +77,37 @@ function checkWinner() {
 
         if (crossWins) {
             infoDisplay.textContent = "Cross Wins!"
+            infoDisplay.style.fontWeight = 'bolder';
+            infoDisplay.style.color = 'red';
             allSquares.forEach(square => square.replaceWith(square.cloneNode(true)))
+            draw = false;
             return
-
         }
     })
-
-    playAgainBtn.addEventListener("click", function () {
-        location.reload()
-    })
-
-    function score() {
-        rnd.score++;
-        // document.querySelector('#player1').infoDisplay = player1;
-        // document.querySelector('#player2').infoDisplay = player2;
+    if (draw) {
+        checkDraw()
     }
 };
+
+function checkDraw() {
+    const allSquares = document.querySelectorAll('.square');
+    let isDraw = true;
+    for (let i = 0; i < allSquares.length; i++) {
+        if (!allSquares[i].firstChild) {
+            isDraw = false
+            break
+        }
+    }
+    if (isDraw) {
+        infoDisplay.textContent = "It's a draw!"
+        infoDisplay.style.fontWeight = 'bolder';
+        allSquares.forEach(square => square.replaceWith(square.cloneNode(true)))
+
+    }
+}
+playAgainBtn.addEventListener("click", function (ev) {
+    location.reload()
+    ev.preventDefault(ev);
+});
+
 
